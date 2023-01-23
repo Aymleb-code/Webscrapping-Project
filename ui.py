@@ -61,6 +61,8 @@ def page_etude_comparative():
 
 
 if __name__ == "__main__":
-    shutil.rmtree("static/uploads")
+    if os.path.exists("static/uploads"):
+        print("exists")
+        shutil.rmtree("static/uploads")
     os.mkdir("static/uploads")
     app.run(host="localhost", port=8080)
