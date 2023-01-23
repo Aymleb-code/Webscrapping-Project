@@ -58,7 +58,7 @@ def graph_genre_percent(starty, endy, genre, save_name=None ) :
     ax.plot(date,number2,label="France")
     ax.set_ylabel("Percent in the Top 50")
     ax.legend()
-    fig.savefig(save_name)
+    fig.savefig(f"static/uploads/{save_name}")
 
 #Genre à montrer :
 #Rock
@@ -116,8 +116,10 @@ def graph_percent_amer_inc(starty, endy):
     plt.show()
     
     
-def comparison_all(starty, endy, save_similarity=None, save_genre_comp=None, genre=None, save_american_percent=None):
+def comparison_all(starty, endy, save_similarity=None, genres=None, save_american_percent=None):
     graph_percent_simil(starty, endy, save_similarity)
-    graph_genre_percent(starty, endy, save_name=save_genre_comp, genre=genre)
+    for genre in genres:
+        save_name_genre = f"{genre}.png"
+        graph_genre_percent(starty, endy, save_name=save_name_genre, genre=genre)
     graph_percent_amer(starty, endy, save_american_percent)
     

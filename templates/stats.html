@@ -34,12 +34,14 @@
             </image>
         </div>
     {% endif %}
-    {% if genre_comp_file%}
-        <div style="text-align:center">
-            <h1 style="font-size:200%;">Comparison of styles evolution:</h1>
-            <image src="{{genre_comp_file}}" style="width: auto; height: auto; max-width:100%; max-height:100%">
+    {% if genres%}
+        {%for genre in genres%}
+        <div style="text-align:center; margin-top:15px;">
+            <h1 style="font-size:200%;">Comparison of {{genre}} evolution:</h1>
+            <image src="static/uploads/{{genre}}.png" style="width: auto; height: auto; max-width:100%; max-height:100%">
             </image>
         </div>
+        {%endfor%}
     {% endif %}
     {% if american_prop_file%}
         <div style="text-align:center">

@@ -53,11 +53,10 @@ def page_etude_comparative():
     save_similarity = f"{UPLOAD_FOLDER}similarity.png"
     save_genre_comp = f"{UPLOAD_FOLDER}genres_comp.png"
     save_percent_american = f"{UPLOAD_FOLDER}percent_american.png"
-    genre="Rock"
-    comp.comparison_all(1961, 2022, save_similarity=save_similarity, save_genre_comp=save_genre_comp,
-                        save_american_percent=save_percent_american, genre=genre)
+    genres=["Rock","Soul", "Pop", "R&B", ]
+    comp.comparison_all(1961, 2022, save_similarity=save_similarity, save_american_percent=save_percent_american, genres=genres)
     return render_template('stats.html', similarity_file=save_similarity,
-                           genre_comp_file=save_genre_comp, american_prop_file=save_percent_american)
+                           genres=genres, american_prop_file=save_percent_american)
 
 
 if __name__ == "__main__":
