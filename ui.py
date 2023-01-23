@@ -13,6 +13,8 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = SECRET_KEY
 
+mode = 'prod'
+
 
 @app.route("/")
 @app.route("/menu")
@@ -35,33 +37,36 @@ def page_stats_hot100():
     data_file = "data/HOT100_year_bis.csv"
     save_genre = f"{UPLOAD_FOLDER}genres.png"
     save_duration = f"{UPLOAD_FOLDER}duration.png"
-    hot100.music_evolution(1958, 2022, precision=20, file=data_file, save_genre=save_genre, save_duration=save_duration)
+    if mode=='dev':
+        hot100.music_evolution(1958, 2022, precision=20, file=data_file, save_genre=save_genre, save_duration=save_duration)
     return render_template('stats.html', genre_file=save_genre, duration_file=save_duration)
 
 
 @app.route("/stats_top50")
 def page_stats_top50():
     data_file = "data/Top50_year_bis.csv"
-    save_genre = f"{UPLOAD_FOLDER}genres.png"
-    save_duration = f"{UPLOAD_FOLDER}duration.png"
-    top50.music_evolution(1961, 2022, precision=20, file=data_file, save_genre=save_genre, save_duration=save_duration)
+    save_genre = f"{UPLOAD_FOLDER}genres_top_50.png"
+    save_duration = f"{UPLOAD_FOLDER}duration_top_50.png"
+    if mode=='dev':
+        top50.music_evolution(1961, 2022, precision=20, file=data_file, save_genre=save_genre, save_duration=save_duration)
     return render_template('stats.html', genre_file=save_genre, duration_file=save_duration)
 
 
 @app.route("/etude_comparative")
 def page_etude_comparative():
     save_similarity = f"{UPLOAD_FOLDER}similarity.png"
-    save_genre_comp = f"{UPLOAD_FOLDER}genres_comp.png"
     save_percent_american = f"{UPLOAD_FOLDER}percent_american.png"
     genres=["Rock","Soul", "Pop", "R&B", ]
-    comp.comparison_all(1961, 2022, save_similarity=save_similarity, save_american_percent=save_percent_american, genres=genres)
+    if mode=='dev':
+        comp.comparison_all(1961, 2022, save_similarity=save_similarity, save_american_percent=save_percent_american, genres=genres)
     return render_template('stats.html', similarity_file=save_similarity,
                            genres=genres, american_prop_file=save_percent_american)
 
 
 if __name__ == "__main__":
-    if os.path.exists("static/uploads"):
-        print("exists")
-        shutil.rmtree("static/uploads")
-    os.mkdir("static/uploads")
+    if mode=='dev':
+        if os.path.exists("static/uploads"):
+            print("exists")
+            shutil.rmtree("static/uploads")
+        os.mkdir("static/uploads")
     app.run(host="localhost", port=8080)
