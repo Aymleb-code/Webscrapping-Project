@@ -25,3 +25,14 @@ In the taskbar on the top of the page, you have 4 options:
 - Etude Comparative: comparative graphs about music evolution on HOT100 and Top50
 
 
+### Project files:
+- hot100_scrap: scrapping of Billboard website 
+- top50_scrap: scrapping of Tubes en France website 
+- wikipedia_scrap: scrapping of Wikipedia website 
+- top50_analysis: graphs about top50 data 
+- hot100_analysis: graphs about hot100 data 
+- comparison_us_fr: comparative graphs about french and US music evolution
+- ui: Flask API
+- templates: all Flask API pages 
+- static/default: Flask images and logos 
+- static/uploads: temporal folder for session images 
