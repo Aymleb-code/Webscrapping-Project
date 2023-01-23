@@ -36,3 +36,5 @@ In the taskbar on the top of the page, you have 4 options:
 - templates: all Flask API pages 
 - static/default: Flask images and logos 
 - static/uploads: temporal folder for session images 
+- data: folder with all csv from scrapping
+- modules: folder with scrapping modules 
