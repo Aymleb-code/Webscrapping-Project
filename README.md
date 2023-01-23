@@ -1,7 +1,7 @@
 # Webscrapping-Project
 
 In this project, we are doing a statistical study about music evolution 
-since 1958. 
+since 1958 and we compare the evolution in France (Top 50) and USA (HOT100).
 
 To do so, we scrap data from 3 websites and 1 API: Billboard, Tubes en France, 
 Wikipedia and the Deezer API. 
